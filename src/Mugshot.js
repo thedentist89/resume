@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 
-// const LEYE_CENTER_X  = 73.63;
-// const LEYE_CENTER_Y  = 183.23;
-// const REYE_CENTER_X = 167.84;
-// const REYE_CENTER_Y = 181.41;
+const LEYE_CENTER_X  = 73.63;
+const LEYE_CENTER_Y  = 183.23;
+const REYE_CENTER_X = 167.84;
+const REYE_CENTER_Y = 181.41;
 
-// const LEYE_MAX_X = 102.806;
-// const LEYE_MIN_X = 44.14;
-// const LEYE_MAX_Y = 210.525;
-// const LEYE_MIN_Y = 156.192;
+const LEYE_MAX_X = 90.00;
+const LEYE_MIN_X = 50.00;
+const LEYE_MAX_Y = 190.00;
+const LEYE_MIN_Y = 166.00;
 
-// const REYE_MAX_X = 203.14;
-// const REYE_MIN_X = 131.14;
-// const REYE_MAX_Y = 207.525;
-// const REYE_MIN_Y = 156.473;
+const REYE_MAX_X = 190.00;
+const REYE_MIN_X = 140.00;
+const REYE_MAX_Y = 190.00;
+const REYE_MIN_Y = 166.00;
 
-// const VIEWBOX_WIDTH  = 321.3;
-// const VIEWBOX_HEIGHT = 383.4;
+const VIEWBOX_WIDTH  = 321.3;
+const VIEWBOX_HEIGHT = 383.4;
 
 
 export default class MugShot extends Component {
@@ -35,15 +35,34 @@ export default class MugShot extends Component {
   }
 
   handleMouseMove(e) {
-    // const boundingBox = this.imageRef.current.getBoundingClientRect();
+    this.lookAt(e.screenX, e.screenY);
+  }
 
-    // const leftEyeOriginX = boundingBox.left + boundingBox.width * LEYE_CENTER_X / VIEWBOX_WIDTH;
-    // const leftEyeOriginY = boundingBox.top + boundingBox.height * LEYE_CENTER_Y / VIEWBOX_HEIGHT;
-    // const rightEyeOriginX = boundingBox.left + boundingBox.width * REYE_CENTER_X / VIEWBOX_WIDTH;
-    // const rightEyeOriginY = boundingBox.top + boundingBox.height * REYE_CENTER_Y / VIEWBOX_HEIGHT;
+  lookAt(x, y) {
+    const bbox = this.imageRef.current.getBoundingClientRect();
 
-    // const mouseX = e.screenX;
-    // const mouseY = e.screenY;
+    const rEyeCenterX = bbox.left + bbox.width * REYE_CENTER_X / VIEWBOX_WIDTH;
+    const rRelX = Math.max(-1, Math.min(1, (x - rEyeCenterX) / (bbox.width * 2)));
+    const rOffsetX = rRelX * (rRelX < 0 ? REYE_CENTER_X - REYE_MIN_X : REYE_MAX_X - REYE_CENTER_X);
+
+    const rEyeCenterY = bbox.top + bbox.height * REYE_CENTER_Y / VIEWBOX_HEIGHT;
+    const rRelY = Math.max(-1, Math.min(1, (y - rEyeCenterY) / bbox.height));
+    const rOffestY = rRelY * (rRelY < 0 ? REYE_CENTER_Y - REYE_MIN_Y : REYE_MAX_Y - REYE_CENTER_Y);
+
+    const lEyeCenterX = bbox.left + bbox.width * LEYE_CENTER_X / VIEWBOX_WIDTH;
+    const lRelX = Math.max(-1, Math.min(1, (x - lEyeCenterX) / (bbox.width * 2)));
+    const lOffsetX = lRelX * (rRelX < 0 ? LEYE_CENTER_X - LEYE_MIN_X : LEYE_MAX_X - LEYE_CENTER_X);
+
+    const lEyeCenterY = bbox.top + bbox.height * LEYE_CENTER_Y / VIEWBOX_HEIGHT;
+    const lRelY = Math.max(-1, Math.min(1, (y - lEyeCenterY) / bbox.height));
+    const lOffestY = lRelY * (lRelY < 0 ? LEYE_CENTER_Y - LEYE_MIN_Y : LEYE_MAX_Y - LEYE_CENTER_Y);
+
+    this.setState({
+      rightEyeOffsetX: rOffsetX,
+      rightEyeOffsetY: rOffestY,
+      leftEyeOffsetX: lOffsetX,
+      leftEyeOffsetY: lOffestY,
+    });
   }
 
   componentDidMount() {
