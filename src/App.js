@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
-import Mugshot from './Mugshot'
+import styled from 'styled-components';
+import Header from './Components/Header';
 
-class App extends Component {
+const StyleBase = styled.div`
+  padding: 16px;
+`;
+
+export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Mugshot className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <StyleBase>
+        <Header />
+      </StyleBase>
     );
   }
 }
-
-export default App;

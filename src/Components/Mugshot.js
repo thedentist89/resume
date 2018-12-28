@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-const LEYE_CENTER_X  = 73.63;
-const LEYE_CENTER_Y  = 183.23;
+const StyleBase = styled.svg`
+  height: 30vmin;
+
+  .st {
+    stroke: #282c34;
+  }
+`;
+
+const LEYE_CENTER_X = 73.63;
+const LEYE_CENTER_Y = 183.23;
 const REYE_CENTER_X = 167.84;
 const REYE_CENTER_Y = 181.41;
 
@@ -77,11 +86,11 @@ export default class MugShot extends Component {
   }
 
   render() {
-    return (<svg
-        className={this.props.className}
+    return (<StyleBase
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 321.3 383.4"
+        alt="Saïd Dermoumi"
         ref={this.imageRef}
       >
       <style type="text/css">
@@ -199,6 +208,6 @@ export default class MugShot extends Component {
       <path className="st st3" d="M252,171.7c11-20,40,1.4,33,25.9c-11.4,40-47,32.5-47,32.5c-7.3,20.4-16.7,35.6-22.9,44.4
         c-4.1,5.8-9.1,11-14.8,15.4c-12.7,9.8-39.3,26.7-71.4,30.4"/>
       <path className="st st4" d="M128.9,323.1c0,0,8,19.8,8.4,38.6"/>
-    </svg>);
+    </StyleBase>);
   }
 }
