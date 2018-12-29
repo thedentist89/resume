@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const StyleBase = styled.svg`
-  height: 30vmin;
-
+const StyledBase = styled.svg`
   .st {
-    stroke: #282c34;
+    fill:none;
+    stroke:#190C0C;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+  }
+
+  .st2 {
+    stroke-width:2;
+  }
+
+  .st3 {
+    stroke-width:3;
+  }
+
+  .st4 {
+    stroke-width:4;
   }
 `;
 
@@ -44,26 +58,29 @@ export default class MugShot extends Component {
   }
 
   handleMouseMove(e) {
-    this.lookAt(e.screenX, e.screenY);
+    if (this.props.followCursor) {
+      this.lookAt(e.x, e.y);
+    }
   }
 
   lookAt(x, y) {
     const bbox = this.imageRef.current.getBoundingClientRect();
+    const xFactor = 2;
+    const yFactor = 1;
 
     const rEyeCenterX = bbox.left + bbox.width * REYE_CENTER_X / VIEWBOX_WIDTH;
-    const rRelX = Math.max(-1, Math.min(1, (x - rEyeCenterX) / (bbox.width * 2)));
-    const rOffsetX = rRelX * (rRelX < 0 ? REYE_CENTER_X - REYE_MIN_X : REYE_MAX_X - REYE_CENTER_X);
-
     const rEyeCenterY = bbox.top + bbox.height * REYE_CENTER_Y / VIEWBOX_HEIGHT;
-    const rRelY = Math.max(-1, Math.min(1, (y - rEyeCenterY) / bbox.height));
-    const rOffestY = rRelY * (rRelY < 0 ? REYE_CENTER_Y - REYE_MIN_Y : REYE_MAX_Y - REYE_CENTER_Y);
-
     const lEyeCenterX = bbox.left + bbox.width * LEYE_CENTER_X / VIEWBOX_WIDTH;
-    const lRelX = Math.max(-1, Math.min(1, (x - lEyeCenterX) / (bbox.width * 2)));
-    const lOffsetX = lRelX * (rRelX < 0 ? LEYE_CENTER_X - LEYE_MIN_X : LEYE_MAX_X - LEYE_CENTER_X);
-
     const lEyeCenterY = bbox.top + bbox.height * LEYE_CENTER_Y / VIEWBOX_HEIGHT;
-    const lRelY = Math.max(-1, Math.min(1, (y - lEyeCenterY) / bbox.height));
+
+    const rRelX = Math.max(-1, Math.min(1, (x - rEyeCenterX) / (bbox.width * xFactor)));
+    const rRelY = Math.max(-1, Math.min(1, (y - rEyeCenterY) / (bbox.height * yFactor)));
+    const lRelX = Math.max(-1, Math.min(1, (x - lEyeCenterX) / (bbox.width * xFactor)));
+    const lRelY = Math.max(-1, Math.min(1, (y - lEyeCenterY) / (bbox.height * yFactor)));
+
+    const rOffsetX = rRelX * (rRelX < 0 ? REYE_CENTER_X - REYE_MIN_X : REYE_MAX_X - REYE_CENTER_X);
+    const rOffestY = rRelY * (rRelY < 0 ? REYE_CENTER_Y - REYE_MIN_Y : REYE_MAX_Y - REYE_CENTER_Y);
+    const lOffsetX = lRelX * (rRelX < 0 ? LEYE_CENTER_X - LEYE_MIN_X : LEYE_MAX_X - LEYE_CENTER_X);
     const lOffestY = lRelY * (lRelY < 0 ? LEYE_CENTER_Y - LEYE_MIN_Y : LEYE_MAX_Y - LEYE_CENTER_Y);
 
     this.setState({
@@ -86,32 +103,26 @@ export default class MugShot extends Component {
   }
 
   render() {
-    return (<StyleBase
+    const { followCursor, ...otherProps } = this.props;
+
+    return (<StyledBase
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 321.3 383.4"
         alt="Saïd Dermoumi"
         ref={this.imageRef}
+        {...otherProps}
       >
-      <style type="text/css">
-      {`
-        .st{fill:none;stroke:#190C0C;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-        .st2{stroke-width:2;}
-        .st3{stroke-width:3;}
-        .st4{stroke-width:4;}
-      `}
-      </style>
       <defs>
         <path id="glassright" d="M192.5,156.7c-11.3-2.9-18.2-3.7-30.4-3.2c-12.1,0.5-27.6,2.7-31.6,9s-4.9,25.5,0,34.3
           c3.3,5.9,12.5,12.8,35,12.8c24.8-0.1,29.1-5,32.1-9.5s8-15.5,7-24.9C203.6,165.6,200.7,158.8,192.5,156.7z"/>
         <path id="glassleft" d="M39,158.8c11.3-2.9,18.2-3.7,30.4-3.2s27.6,2.7,31.6,9s4.9,25.5,0,34.3
           c-3.3,5.9-12.5,12.8-35,12.8c-24.8-0.1-29.1-5-32.1-9.5s-8-15.5-7-24.9C27.8,167.7,30.8,160.8,39,158.8z"/>
+        <clipPath id="glassmask">
+          <use xlinkHref="#glassright" />
+          <use xlinkHref="#glassleft" />
+        </clipPath>
       </defs>
-      <mask id="glassmask">
-        <rect x="0" y="0" width="100%" height="100%" fill="black" />
-        <use xlinkHref="#glassright" fill="white" />
-        <use xlinkHref="#glassleft" fill="white" />
-      </mask>
       <path className="st st4" d="M272.2,43.5c0,0-2.1-4-4.4-17.2c-1.9-10.6-1.8-10.3-3.5-15.2"/>
       <path className="st st4" d="M260.8,30.4C258,16,251.4,6.9,251.4,6.9"/>
       <path className="st st4" d="M96.4,13.1c0,0,28.5-10.1,72-11.1s92.3,28.3,92.3,28.3"/>
@@ -119,7 +130,7 @@ export default class MugShot extends Component {
         c0.2-0.1,0.2-0.4,0-0.5c-9-3.6-11.5-3.5-17.3-8.3c-1.6-1.3-1.2-3.8,0.7-4.5c20.4-7.8,42.6-9.7,47.6-10c0.4,0,0.6-0.5,0.4-0.8
         c-4.7-5.6-7.8-16.9-8.9-22.4C56,5.8,56.6,4,59.8,4.2c0,0,7.4,1.7,16.8,4.3c15.7,4.4,26.4,5.6,26.4,5.6"/>
       <path className="st st4" d="M128.9,320.7c-9.2,1.1-19,1-28.9-0.7c-59-10-56-109.8-56-109.8"/>
-      <g mask={`url(#glassmask)`}>
+      <g clipPath={`url(#glassmask)`}>
         <path className="st st2"
           transform={`translate(${this.state.rightEyeOffsetX} ${this.state.rightEyeOffsetY})`}
           d="M164.6,157.5c-1.7,16.1,0.2,32.3,3.3,48.2c-0.1-15.2-0.3-30.5-0.4-45.7
@@ -208,6 +219,6 @@ export default class MugShot extends Component {
       <path className="st st3" d="M252,171.7c11-20,40,1.4,33,25.9c-11.4,40-47,32.5-47,32.5c-7.3,20.4-16.7,35.6-22.9,44.4
         c-4.1,5.8-9.1,11-14.8,15.4c-12.7,9.8-39.3,26.7-71.4,30.4"/>
       <path className="st st4" d="M128.9,323.1c0,0,8,19.8,8.4,38.6"/>
-    </StyleBase>);
+    </StyledBase>);
   }
 }
