@@ -3,17 +3,7 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Header from './Components/Header';
 import Experience from './Components/Experience';
 import Education from './Components/Education';
-
-const lightTheme = {
-  fg: 'hsl(205, 7%, 33%)',
-  bg: 'hsl(0, 0%, 98%)',
-
-  // primary: 'hsl(200, 72%, 39%)',
-  primary: 'hsl(222, 22%, 15%)',
-  secondary: 'hsl(210, 8%, 46%)',
-  accent: 'hsl(27, 96%, 54%)',
-  accent800: 'hsl(27, 98%, 85%)',
-};
+import style from './style';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -30,7 +20,7 @@ const StyleBase = styled.div`
 export default class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={style.light}>
         <StyleBase>
           <GlobalStyle />
           <Header />
