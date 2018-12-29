@@ -21,6 +21,13 @@ const StyledBase = styled.svg`
   .st4 {
     stroke-width:4;
   }
+
+  /* Reset eyes position for printing */
+  @media print {
+    .eyes {
+      transform: unset !important;
+    }
+  }
 `;
 
 const LEYE_CENTER_X = 73.63;
@@ -131,14 +138,14 @@ export default class MugShot extends Component {
         c-4.7-5.6-7.8-16.9-8.9-22.4C56,5.8,56.6,4,59.8,4.2c0,0,7.4,1.7,16.8,4.3c15.7,4.4,26.4,5.6,26.4,5.6"/>
       <path className="st st4" d="M128.9,320.7c-9.2,1.1-19,1-28.9-0.7c-59-10-56-109.8-56-109.8"/>
       <g clipPath={`url(#glassmask)`}>
-        <path className="st st2"
+        <path className="st st2 eyes"
           transform={`translate(${this.state.rightEyeOffsetX} ${this.state.rightEyeOffsetY})`}
           d="M164.6,157.5c-1.7,16.1,0.2,32.3,3.3,48.2c-0.1-15.2-0.3-30.5-0.4-45.7
           c-3.5,8.4-0.5,18.1-1.4,27.2c-0.6,5.4-2.5,11.1-0.1,16.1c-2.6-1.9-3.2-5.5-3.4-8.8c-1.1-12.5-0.8-25,0.7-37.4
           c1.8,1.3,2.4,3.7,2.8,5.8c2.4,13.3-0.9,27,0.6,40.4c0.8,0.2,1.3-0.8,1.4-1.5c3.2-15.1,2.9-30.7,2.5-46.1c0,17.2-0.1,34.3-0.1,51.5
           c6.8-14.4,5.5-31.2,4.1-47.1c0.3,14.2,0.3,28.5-0.1,42.7c-4-14.8,1.8-31-2.7-45.6c-0.3,4-0.4,8.1-0.3,12.1
           c0.1,12.7,1.8,25.5,0.6,38.1c-3.6-2.6-4.3-7.6-4.3-12c0-12.3,3.2-24.9-0.3-36.7c-0.3,15.7-0.9,31.4-2,47.1"/>
-        <path className="st st2" mask={`url(#glassleftmask)`}
+        <path className="st st2 eyes"
           transform={`translate(${this.state.leftEyeOffsetX} ${this.state.leftEyeOffsetY})`}
           d="M74.7,209.4c1.8-16.7,2.9-33.4,3.5-50.2c2.5,6.7,1.1,14.1,0.3,21.1c-0.9,8.7-0.7,17.5,0.5,26.1
           c1.9-15.4,3.8-31,1.8-46.4c-0.5,9.5-1,18.9-1.4,28.4c-0.3,6.6-0.9,13.6-5.1,18.6c-1.2-0.8-1.3-2.4-1.3-3.9c0-12.7,2.8-25.4,2.2-38.1
