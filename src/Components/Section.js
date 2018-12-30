@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const StyleBase = styled.section`
-  margin-bottom: 54px;
+  margin-bottom: 38px;
 
   &:last-child {
     margin-bottom: 16px;

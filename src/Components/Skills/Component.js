@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Section from './Section';
-import EducationItem from './Education/Item';
+import Section from '../Section';
+import Item from './Item';
 
-import data from '../Data/education.json';
+import data from '../../Data/skills.json';
 
 const StyleBase = styled(Section)`
 
 `;
 
-export default class Education extends Component {
+export default class Skills extends Component {
   render() {
     const children = data.map((item, i) => (
-      <EducationItem key={i} {...item} />
+      <Item key={i} {...item} />
     ));
 
     return (<StyleBase
-      label="Education"
+      label="Skills"
     >
       {children}
     </StyleBase>);

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import Header from './Components/Header';
-import Experience from './Components/Experience';
-import Education from './Components/Education';
 import style from './style';
+import Header from './Components/Header';
+import Experience from './Components/Experience/Component';
+import Skills from './Components/Skills/Component';
+import Education from './Components/Education/Component';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -38,6 +39,7 @@ export default class App extends Component {
           <Header />
           <div className="main">
             <Experience />
+            <Skills />
             <Education />
           </div>
           <div>

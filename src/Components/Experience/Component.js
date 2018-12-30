@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Section from './Section';
-import UnitedRemote from './Experience/UnitedRemote';
-import Caciopee from './Experience/Caciopee';
-import M2n from './Experience/M2n';
-import Rockout from './Experience/Rockout';
+import Section from '../Section';
+import UnitedRemote from './UnitedRemote';
+import Caciopee from './Caciopee';
+import M2n from './M2n';
+import Rockout from './Rockout';
 
 const StyleBase = styled(Section)`
 
