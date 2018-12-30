@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyleBase = styled.article`
   margin-bottom: 16px;
-  max-width: 608px;
+  /* max-width: 608px; */
 
   &:last-child {
     margin-bottom: 0;
@@ -73,13 +73,17 @@ export default class Item extends Component {
       period = this.props.period
     }
 
+    const tasks = this.props.tasks.map((task, i) => (
+      <li key={i} dangerouslySetInnerHTML={{ __html: task }} />
+    ));
+
     return (<StyleBase {...this.props}>
       <div className="heading">
-        <div className="title">{this.props.label}</div>
-        <div className="sub-title">{this.props.info} <span className="period">{period}</span></div>
+        <div className="title">{this.props.title}</div>
+        <div className="sub-title">{this.props.subtitle} <span className="period">{period}</span></div>
       </div>
       <div className="item-content">
-        {this.props.children}
+        <ul>{tasks}</ul>
       </div>
     </StyleBase>);
   }

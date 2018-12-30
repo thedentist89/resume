@@ -5,11 +5,16 @@ import Header from './Components/Header';
 import Experience from './Components/Experience/Component';
 import Skills from './Components/Skills/Component';
 import Education from './Components/Education/Component';
+import Extra from './Components/Extra/Component';
 
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${props => props.theme.bg};
     min-width: 320px;
+
+    @media print {
+      background-color: transparent;
+    }
   }
 `;
 
@@ -17,15 +22,25 @@ const StyleBase = styled.div`
   padding: 16px;
   color: ${props => props.theme.fg};
 
+  .side {
+    margin-top: 38px;
+  }
+
   @media print {
+    width: 1024px;
     display: grid;
-    grid-gap: 36px;
+    grid-gap: 80px;
     grid-template-columns: 320px 1fr;
     grid-template-rows: auto 1fr;
+    padding: 0;
 
     .main {
       grid-column: 2;
       grid-row: 1 / -1;
+    }
+
+    .side {
+      margin-top: 0;
     }
   }
 `;
@@ -42,8 +57,8 @@ export default class App extends Component {
             <Skills />
             <Education />
           </div>
-          <div>
-            Hello, Lorem ipsum dolor sit amet
+          <div className="side">
+            <Extra />
           </div>
         </StyleBase>
       </ThemeProvider>

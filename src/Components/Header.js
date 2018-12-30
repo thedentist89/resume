@@ -7,10 +7,10 @@ const StyleBase = styled.header`
   display: flex;
   flex-flow: column;
   justify-content: center;
-  margin-bottom: 32px;
 
   @media screen {
     min-height: calc(100vh - 100px);
+    margin-bottom: 32px;
   }
 
   .mugshot {
