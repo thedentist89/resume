@@ -25,7 +25,7 @@ const StyledBase = styled.svg`
   /* Reset eyes position for printing */
   @media print {
     .eyes {
-      transform: unset !important;
+      transform: translate(0, 0) !important;
     }
   }
 `;

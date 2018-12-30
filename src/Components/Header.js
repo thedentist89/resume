@@ -4,10 +4,14 @@ import Mugshot from './Mugshot';
 import data from '../Data/header.json';
 
 const StyleBase = styled.header`
-  min-height: calc(100vh - 100px);
   display: flex;
   flex-flow: column;
   justify-content: center;
+  margin-bottom: 32px;
+
+  @media screen {
+    min-height: calc(100vh - 100px);
+  }
 
   .mugshot {
     max-width: 230px;
