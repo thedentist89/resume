@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
 const StyleBase = styled.section`
   margin-bottom: 38px;
@@ -22,15 +22,15 @@ const StyleBase = styled.section`
   a {
     color: ${props => props.theme.primary};
   }
-`;
+`
 
 export default class Section extends Component {
   render() {
-    return (<StyleBase {...this.props}>
-      <h3>{this.props.label}</h3>
-      <div className="section-content">
-        {this.props.children}
-      </div>
-    </StyleBase>);
+    return (
+      <StyleBase {...this.props}>
+        <h3>{this.props.label}</h3>
+        <div className="section-content">{this.props.children}</div>
+      </StyleBase>
+    )
   }
 }

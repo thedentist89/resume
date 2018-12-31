@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import styled from 'styled-components';
+import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 
 const StyleBase = styled.article`
   margin-bottom: 16px;
@@ -33,26 +33,35 @@ const StyleBase = styled.article`
     font-family: icomoon;
     font-size: 0.9em;
   }
-`;
+`
 
 export default class Item extends Component {
   render() {
-    let period;
-    if (Array.isArray(this.props.period) && typeof this.props.period[0] === 'string') {
-      period = (<Fragment>
-        {this.props.period[0]}
-        <span className="period-arrow"> &#xe900; </span>
-        {this.props.period[1]}
-      </Fragment>);
+    let period
+    if (
+      Array.isArray(this.props.period) &&
+      typeof this.props.period[0] === 'string'
+    ) {
+      period = (
+        <Fragment>
+          {this.props.period[0]}
+          <span className="period-arrow"> &#xe900; </span>
+          {this.props.period[1]}
+        </Fragment>
+      )
     } else {
       period = this.props.period
     }
 
-    return (<StyleBase {...this.props}>
-      <div className="heading">
-        <div className="title">{this.props.degree}</div>
-        <div className="sub-title">{this.props.info} <span className="period">{period}</span></div>
-      </div>
-    </StyleBase>);
+    return (
+      <StyleBase {...this.props}>
+        <div className="heading">
+          <div className="title">{this.props.degree}</div>
+          <div className="sub-title">
+            {this.props.info} <span className="period">{period}</span>
+          </div>
+        </div>
+      </StyleBase>
+    )
   }
 }

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
 const StyleBase = styled.article`
   margin-bottom: 16px;
@@ -30,15 +30,19 @@ const StyleBase = styled.article`
     white-space: nowrap;
     color: ${props => props.theme.accent};
   }
-`;
+`
 
 export default class Item extends Component {
   render() {
-    return (<StyleBase {...this.props}>
-      <div className="heading">
-        <div className="title">{this.props.label} <span className="level">{this.props.level}</span></div>
-        <div className="sub-title">{this.props.details}</div>
-      </div>
-    </StyleBase>);
+    return (
+      <StyleBase {...this.props}>
+        <div className="heading">
+          <div className="title">
+            {this.props.label} <span className="level">{this.props.level}</span>
+          </div>
+          <div className="sub-title">{this.props.details}</div>
+        </div>
+      </StyleBase>
+    )
   }
 }

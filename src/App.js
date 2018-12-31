@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import style from './style';
-import Header from './Components/Header';
-import Experience from './Components/Experience/Component';
-import Skills from './Components/Skills/Component';
-import Education from './Components/Education/Component';
-import Extra from './Components/Extra/Component';
+import React, { Component } from 'react'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import style from './style'
+import Header from './Components/Header'
+import Experience from './Components/Experience/Component'
+import Skills from './Components/Skills/Component'
+import Education from './Components/Education/Component'
+import Extra from './Components/Extra/Component'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
       background-color: transparent;
     }
   }
-`;
+`
 
 const StyleBase = styled.div`
   padding: 16px;
@@ -43,7 +43,7 @@ const StyleBase = styled.div`
       margin-top: 0;
     }
   }
-`;
+`
 
 export default class App extends Component {
   render() {
@@ -62,6 +62,6 @@ export default class App extends Component {
           </div>
         </StyleBase>
       </ThemeProvider>
-    );
+    )
   }
 }

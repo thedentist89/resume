@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Mugshot from './Mugshot';
-import data from '../Data/header.json';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import Mugshot from './Mugshot'
+import data from '../Data/header.json'
 
 const StyleBase = styled.header`
   display: flex;
@@ -67,7 +67,7 @@ const StyleBase = styled.header`
       content: '\\e905';
     }
   }
-`;
+`
 
 export default class Header extends Component {
   render() {
@@ -76,15 +76,21 @@ export default class Header extends Component {
         <Mugshot className="mugshot" followCursor />
         <h1>{data.fullName}</h1>
         <h2>{data.title}</h2>
-        <div className="profile">{
-          data.profile.map((line, i) => (<div key={i}>{line}</div>))
-        }</div>
+        <div className="profile">
+          {data.profile.map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
+        </div>
         <div className="meta">
-          <div className="email"><a href={`mailto:${data.email}`}>{data.email}</a></div>
-          <div className="github"><a href={`//${data.github}`}>{data.github}</a></div>
+          <div className="email">
+            <a href={`mailto:${data.email}`}>{data.email}</a>
+          </div>
+          <div className="github">
+            <a href={`//${data.github}`}>{data.github}</a>
+          </div>
           <div className="address">{data.address}</div>
         </div>
       </StyleBase>
-    );
+    )
   }
 }

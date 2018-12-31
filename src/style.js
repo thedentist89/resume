@@ -8,4 +8,4 @@ export default {
     // accent: 'hsl(27, 96%, 54%)',
     accent: 'hsl(209, 89%, 44%)',
   },
-};
+}
