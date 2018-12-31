@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import Section from '../Section'
 import Item from './Item'
 
-import data from '../../Data/extra.json'
-
-const StyleBase = styled(Section)``
-
 export default class Extra extends Component {
-  render() {
-    const children = data.map((item, i) => <Item key={i} {...item} />)
+  constructor(props) {
+    super(props)
+    this.state = { data: null }
 
-    return <StyleBase label="Other">{children}</StyleBase>
+    import('../../Data/extra').then(module =>
+      this.setState({ data: module.default })
+    )
+  }
+
+  render() {
+    if (!this.state.data) return null
+
+    return (
+      <Section label="Other">
+        {this.state.data.map((item, i) => (
+          <Item key={i} {...item} />
+        ))}
+      </Section>
+    )
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Mugshot from './Mugshot'
-import data from '../Data/header.json'
+import data from '../Data/header'
 
 const StyleBase = styled.header`
   display: flex;
@@ -70,10 +69,21 @@ const StyleBase = styled.header`
 `
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { mugshot: null }
+
+    import('./Mugshot').then(module =>
+      this.setState({ mugshot: module.default })
+    )
+  }
+
   render() {
+    const Mugshot = this.state.mugshot
     return (
       <StyleBase>
-        <Mugshot className="mugshot" followCursor />
+        {Mugshot && <Mugshot className="mugshot" followCursor />}
         <h1>{data.fullName}</h1>
         <h2>{data.title}</h2>
         <div className="profile">

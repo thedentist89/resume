@@ -5,7 +5,6 @@ export default {
 
     primary: 'hsl(222, 22%, 15%)',
     secondary: 'hsl(210, 8%, 45%)',
-    // accent: 'hsl(27, 96%, 54%)',
     accent: 'hsl(209, 89%, 44%)',
   },
 }

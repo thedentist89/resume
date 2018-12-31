@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import Section from '../Section'
 import Item from './Item'
-import data from '../../Data/experience.json'
-
-const StyleBase = styled(Section)``
 
 export default class Experience extends Component {
-  render() {
-    const children = data.map((item, i) => <Item key={i} {...item} />)
+  constructor(props) {
+    super(props)
+    this.state = { data: null }
 
-    return <StyleBase label="Experience">{children}</StyleBase>
+    import('../../Data/experience').then(module =>
+      this.setState({ data: module.default })
+    )
+  }
+
+  render() {
+    if (!this.state.data) return null
+
+    return (
+      <Section label="Experience">
+        {this.state.data.map((item, i) => (
+          <Item key={i} {...item} />
+        ))}
+      </Section>
+    )
   }
 }
