@@ -30,7 +30,7 @@ const StyleBase = styled.div`
   @media print {
     width: 1024px;
     display: grid;
-    grid-gap: 80px;
+    grid-gap: 68px;
     grid-template-columns: 320px 1fr;
     grid-template-rows: auto 1fr;
     padding: 0;

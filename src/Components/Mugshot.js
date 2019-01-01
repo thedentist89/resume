@@ -45,8 +45,12 @@ const REYE_MIN_X = 140.0
 const REYE_MAX_Y = 190.0
 const REYE_MIN_Y = 166.0
 
-const VIEWBOX_WIDTH = 321.3
-const VIEWBOX_HEIGHT = 383.4
+const SVG_WIDTH = 321.3
+const SVG_HEIGHT = 383.4
+
+function clamp(value, min, max) {
+  return value > max ? max : value < min ? min : value
+}
 
 export default class MugShot extends Component {
   constructor(props) {
@@ -74,29 +78,15 @@ export default class MugShot extends Component {
     const xFactor = 2
     const yFactor = 1
 
-    const rEyeCenterX = bbox.left + (bbox.width * REYE_CENTER_X) / VIEWBOX_WIDTH
-    const rEyeCenterY =
-      bbox.top + (bbox.height * REYE_CENTER_Y) / VIEWBOX_HEIGHT
-    const lEyeCenterX = bbox.left + (bbox.width * LEYE_CENTER_X) / VIEWBOX_WIDTH
-    const lEyeCenterY =
-      bbox.top + (bbox.height * LEYE_CENTER_Y) / VIEWBOX_HEIGHT
+    const rEyeCenterX = bbox.left + (bbox.width * REYE_CENTER_X) / SVG_WIDTH
+    const rEyeCenterY = bbox.top + (bbox.height * REYE_CENTER_Y) / SVG_HEIGHT
+    const lEyeCenterX = bbox.left + (bbox.width * LEYE_CENTER_X) / SVG_WIDTH
+    const lEyeCenterY = bbox.top + (bbox.height * LEYE_CENTER_Y) / SVG_HEIGHT
 
-    const rRelX = Math.max(
-      -1,
-      Math.min(1, (x - rEyeCenterX) / (bbox.width * xFactor))
-    )
-    const rRelY = Math.max(
-      -1,
-      Math.min(1, (y - rEyeCenterY) / (bbox.height * yFactor))
-    )
-    const lRelX = Math.max(
-      -1,
-      Math.min(1, (x - lEyeCenterX) / (bbox.width * xFactor))
-    )
-    const lRelY = Math.max(
-      -1,
-      Math.min(1, (y - lEyeCenterY) / (bbox.height * yFactor))
-    )
+    const rRelX = clamp((x - rEyeCenterX) / (bbox.width * xFactor), -1, 1)
+    const rRelY = clamp((y - rEyeCenterY) / (bbox.height * yFactor), -1, 1)
+    const lRelX = clamp((x - lEyeCenterX) / (bbox.width * xFactor), -1, 1)
+    const lRelY = clamp((y - lEyeCenterY) / (bbox.height * yFactor), -1, 1)
 
     const rOffsetX =
       rRelX *
@@ -137,7 +127,7 @@ export default class MugShot extends Component {
       <StyledBase
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 321.3 383.4"
+        viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
         alt="Saïd Dermoumi"
         ref={this.imageRef}
         {...otherProps}
@@ -146,12 +136,12 @@ export default class MugShot extends Component {
           <path
             id="glassright"
             d="M192.5,156.7c-11.3-2.9-18.2-3.7-30.4-3.2c-12.1,0.5-27.6,2.7-31.6,9s-4.9,25.5,0,34.3
-          c3.3,5.9,12.5,12.8,35,12.8c24.8-0.1,29.1-5,32.1-9.5s8-15.5,7-24.9C203.6,165.6,200.7,158.8,192.5,156.7z"
+               c3.3,5.9,12.5,12.8,35,12.8c24.8-0.1,29.1-5,32.1-9.5s8-15.5,7-24.9C203.6,165.6,200.7,158.8,192.5,156.7z"
           />
           <path
             id="glassleft"
             d="M39,158.8c11.3-2.9,18.2-3.7,30.4-3.2s27.6,2.7,31.6,9s4.9,25.5,0,34.3
-          c-3.3,5.9-12.5,12.8-35,12.8c-24.8-0.1-29.1-5-32.1-9.5s-8-15.5-7-24.9C27.8,167.7,30.8,160.8,39,158.8z"
+               c-3.3,5.9-12.5,12.8-35,12.8c-24.8-0.1-29.1-5-32.1-9.5s-8-15.5-7-24.9C27.8,167.7,30.8,160.8,39,158.8z"
           />
           <clipPath id="glassmask">
             <use xlinkHref="#glassright" />
@@ -170,8 +160,8 @@ export default class MugShot extends Component {
         <path
           className="st st4"
           d="M27.7,92.8C19.3,89.7,9.8,91,5,92c-1.7,0.4-3.2-1.1-3-2.9c3-18.7,27.9-33.4,31.7-35.5
-        c0.2-0.1,0.2-0.4,0-0.5c-9-3.6-11.5-3.5-17.3-8.3c-1.6-1.3-1.2-3.8,0.7-4.5c20.4-7.8,42.6-9.7,47.6-10c0.4,0,0.6-0.5,0.4-0.8
-        c-4.7-5.6-7.8-16.9-8.9-22.4C56,5.8,56.6,4,59.8,4.2c0,0,7.4,1.7,16.8,4.3c15.7,4.4,26.4,5.6,26.4,5.6"
+             c0.2-0.1,0.2-0.4,0-0.5c-9-3.6-11.5-3.5-17.3-8.3c-1.6-1.3-1.2-3.8,0.7-4.5c20.4-7.8,42.6-9.7,47.6-10c0.4,0,0.6-0.5,0.4-0.8
+             c-4.7-5.6-7.8-16.9-8.9-22.4C56,5.8,56.6,4,59.8,4.2c0,0,7.4,1.7,16.8,4.3c15.7,4.4,26.4,5.6,26.4,5.6"
         />
         <path
           className="st st4"
@@ -180,26 +170,30 @@ export default class MugShot extends Component {
         <g clipPath={`url(#glassmask)`}>
           <path
             className="st st2 eyes"
-            transform={`translate(${this.state.rightEyeOffsetX} ${
+            transform={`
+              translate(${this.state.rightEyeOffsetX} ${
               this.state.rightEyeOffsetY
-            })`}
+            })
+            `}
             d="M164.6,157.5c-1.7,16.1,0.2,32.3,3.3,48.2c-0.1-15.2-0.3-30.5-0.4-45.7
-          c-3.5,8.4-0.5,18.1-1.4,27.2c-0.6,5.4-2.5,11.1-0.1,16.1c-2.6-1.9-3.2-5.5-3.4-8.8c-1.1-12.5-0.8-25,0.7-37.4
-          c1.8,1.3,2.4,3.7,2.8,5.8c2.4,13.3-0.9,27,0.6,40.4c0.8,0.2,1.3-0.8,1.4-1.5c3.2-15.1,2.9-30.7,2.5-46.1c0,17.2-0.1,34.3-0.1,51.5
-          c6.8-14.4,5.5-31.2,4.1-47.1c0.3,14.2,0.3,28.5-0.1,42.7c-4-14.8,1.8-31-2.7-45.6c-0.3,4-0.4,8.1-0.3,12.1
-          c0.1,12.7,1.8,25.5,0.6,38.1c-3.6-2.6-4.3-7.6-4.3-12c0-12.3,3.2-24.9-0.3-36.7c-0.3,15.7-0.9,31.4-2,47.1"
+               c-3.5,8.4-0.5,18.1-1.4,27.2c-0.6,5.4-2.5,11.1-0.1,16.1c-2.6-1.9-3.2-5.5-3.4-8.8c-1.1-12.5-0.8-25,0.7-37.4
+               c1.8,1.3,2.4,3.7,2.8,5.8c2.4,13.3-0.9,27,0.6,40.4c0.8,0.2,1.3-0.8,1.4-1.5c3.2-15.1,2.9-30.7,2.5-46.1c0,17.2-0.1,34.3-0.1,51.5
+               c6.8-14.4,5.5-31.2,4.1-47.1c0.3,14.2,0.3,28.5-0.1,42.7c-4-14.8,1.8-31-2.7-45.6c-0.3,4-0.4,8.1-0.3,12.1
+               c0.1,12.7,1.8,25.5,0.6,38.1c-3.6-2.6-4.3-7.6-4.3-12c0-12.3,3.2-24.9-0.3-36.7c-0.3,15.7-0.9,31.4-2,47.1"
           />
           <path
             className="st st2 eyes"
-            transform={`translate(${this.state.leftEyeOffsetX} ${
+            transform={`
+              translate(${this.state.leftEyeOffsetX} ${
               this.state.leftEyeOffsetY
-            })`}
+            })
+            `}
             d="M74.7,209.4c1.8-16.7,2.9-33.4,3.5-50.2c2.5,6.7,1.1,14.1,0.3,21.1c-0.9,8.7-0.7,17.5,0.5,26.1
-          c1.9-15.4,3.8-31,1.8-46.4c-0.5,9.5-1,18.9-1.4,28.4c-0.3,6.6-0.9,13.6-5.1,18.6c-1.2-0.8-1.3-2.4-1.3-3.9c0-12.7,2.8-25.4,2.2-38.1
-          c0-0.9-0.1-1.8-0.6-2.5s-1.6-1-2.3-0.5c-0.4,0.4-0.5,1-0.6,1.6c-1.4,13.9-1.2,27.9,0.8,41.7c0.3-8.1,0.6-16.3,0.9-24.4
-          c0.2-6.4,0.5-12.8,2.2-19c3.4,6.8,2.5,15,1.2,22.5c-1.3,7.5-2.9,15.5-0.4,22.7c1-10.8,0.4-21.7-1.6-32.3c-1-5.2-2.3-10.8-0.1-15.7
-          c2.7,7.7,1.9,16.3,0.3,24.3c-1.6,8.1-3.8,16.1-3.7,24.3c-1.8-15.9-2.4-31.9-1.8-47.9 M69.3,170.9c0,3.5-0.1,7-0.4,10.5
-          c-0.3,4.7-0.9,9.4,0.1,14"
+               c1.9-15.4,3.8-31,1.8-46.4c-0.5,9.5-1,18.9-1.4,28.4c-0.3,6.6-0.9,13.6-5.1,18.6c-1.2-0.8-1.3-2.4-1.3-3.9c0-12.7,2.8-25.4,2.2-38.1
+               c0-0.9-0.1-1.8-0.6-2.5s-1.6-1-2.3-0.5c-0.4,0.4-0.5,1-0.6,1.6c-1.4,13.9-1.2,27.9,0.8,41.7c0.3-8.1,0.6-16.3,0.9-24.4
+               c0.2-6.4,0.5-12.8,2.2-19c3.4,6.8,2.5,15,1.2,22.5c-1.3,7.5-2.9,15.5-0.4,22.7c1-10.8,0.4-21.7-1.6-32.3c-1-5.2-2.3-10.8-0.1-15.7
+               c2.7,7.7,1.9,16.3,0.3,24.3c-1.6,8.1-3.8,16.1-3.7,24.3c-1.8-15.9-2.4-31.9-1.8-47.9 M69.3,170.9c0,3.5-0.1,7-0.4,10.5
+               c-0.3,4.7-0.9,9.4,0.1,14"
           />
         </g>
         <path
@@ -209,12 +203,12 @@ export default class MugShot extends Component {
         <path
           className="st st4"
           d="M30.7,89.8c0,0-10.2,9.2-6.9,36.1c0.1,0.5,0.6,0.6,0.9,0.3c2.6-2.7,11.4-11.6,20.5-19.8
-        c0.4-0.3,1-0.1,1.1,0.4c0.2,2.3,0.9,7.5,2.5,12.9"
+             c0.4-0.3,1-0.1,1.1,0.4c0.2,2.3,0.9,7.5,2.5,12.9"
         />
         <path
           className="st st3"
           d="M83.5,81.5c0,0,2.4,12.2,17,26.5c9.5,9.3,16.5,14.8,20,17.3c0.8,0.6,1.9-0.2,1.6-1.1
-        c-1.6-6.1-4.6-20.9,1.1-31.4"
+             c-1.6-6.1-4.6-20.9,1.1-31.4"
         />
         <path
           className="st st3"
@@ -223,12 +217,12 @@ export default class MugShot extends Component {
         <path
           className="st st3"
           d="M174,101.8c0,0,14.1,9.5,18.6,19.8c3.4,7.7,5,16.3,5.6,20.2c0.1,0.9,1.2,1.2,1.8,0.5
-        c3.4-3.9,11.2-15.3,11.2-36.8"
+             c3.4-3.9,11.2-15.3,11.2-36.8"
         />
         <path
           className="st st3"
           d="M210.4,117.3c0,0,0,17.4,8.8,29.4c4.7,6.4,11.6,12.9,19,16.4c1.3,0.6,2.7-0.8,2-2.1
-        c-2.2-3.8-4.9-9.5-4-12.9"
+             c-2.2-3.8-4.9-9.5-4-12.9"
         />
         <path
           className="st st3"
@@ -322,7 +316,7 @@ export default class MugShot extends Component {
         <path
           className="st st3"
           d="M252,171.7c11-20,40,1.4,33,25.9c-11.4,40-47,32.5-47,32.5c-7.3,20.4-16.7,35.6-22.9,44.4
-        c-4.1,5.8-9.1,11-14.8,15.4c-12.7,9.8-39.3,26.7-71.4,30.4"
+             c-4.1,5.8-9.1,11-14.8,15.4c-12.7,9.8-39.3,26.7-71.4,30.4"
         />
         <path className="st st4" d="M128.9,323.1c0,0,8,19.8,8.4,38.6" />
       </StyledBase>
