@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from './style'
 import Header from './Components/Header'
-import Experience from './Components/Experience/Component'
-import Skills from './Components/Skills/Component'
-import Education from './Components/Education/Component'
-import Extra from './Components/Extra/Component'
+
+const Experience = React.lazy(() => import('./Components/Experience/Component'))
+const Skills = React.lazy(() => import('./Components/Skills/Component'))
+const Education = React.lazy(() => import('./Components/Education/Component'))
+const Extra = React.lazy(() => import('./Components/Extra/Component'))
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -53,12 +54,20 @@ export default class App extends Component {
           <GlobalStyle />
           <Header />
           <div className="main">
-            <Experience />
-            <Skills />
-            <Education />
+            <Suspense fallback="">
+              <Experience />
+            </Suspense>
+            <Suspense fallback="">
+              <Skills />
+            </Suspense>
+            <Suspense fallback="">
+              <Education />
+            </Suspense>
           </div>
           <div className="side">
-            <Extra />
+            <Suspense fallback="">
+              <Extra />
+            </Suspense>
           </div>
         </StyleBase>
       </ThemeProvider>

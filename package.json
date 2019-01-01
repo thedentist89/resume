@@ -20,7 +20,9 @@
     "eject": "react-scripts eject"
   },
   "babel": {
-    "plugins": ["babel-plugin-styled-components"]
+    "plugins": [
+      "babel-plugin-styled-components"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
