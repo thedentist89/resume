@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import styled from 'styled-components'
 import data from '../Data/header'
+
+const Mugshot = React.lazy(() => import('./Mugshot'))
 
 const StyleBase = styled.header`
   display: flex;
@@ -69,21 +71,12 @@ const StyleBase = styled.header`
 `
 
 export default class Header extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { mugshot: null }
-
-    import('./Mugshot').then(module =>
-      this.setState({ mugshot: module.default })
-    )
-  }
-
   render() {
-    const Mugshot = this.state.mugshot
     return (
       <StyleBase>
-        {Mugshot && <Mugshot className="mugshot" followCursor />}
+        <Suspense fallback="">
+          <Mugshot className="mugshot" followCursor />
+        </Suspense>
         <h1>{data.fullName}</h1>
         <h2>{data.title}</h2>
         <div className="profile">

@@ -52,7 +52,7 @@ function clamp(value, min, max) {
   return value > max ? max : value < min ? min : value
 }
 
-export default class MugShot extends Component {
+export default class Mugshot extends Component {
   constructor(props) {
     super(props)
 
