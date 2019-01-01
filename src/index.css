@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Montserrat:700');
-
 @font-face {
   font-family: 'icomoon';
   src: url('Fonts/icomoon.ttf?5jilwm') format('truetype'),
@@ -13,7 +11,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', Roboto,
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -26,8 +24,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Montserrat, Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  font-weight: 600;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Oxygen', Roboto, 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  font-weight: 500;
 }
