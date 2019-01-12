@@ -6,11 +6,6 @@ services:
 variables:
   DOCKER_REGISTRY: registry.gitlab.com
 
-cache:
-  key: $CI_PROJECT_PATH_SLUG
-  paths:
-    - node_modules/
-
 stages:
   - prepare
   - test
@@ -31,6 +26,10 @@ test:
   script:
     - npm install
     - npm test -- --coverage
+  cache:
+    key: $CI_PROJECT_PATH_SLUG
+    paths:
+      - node_modules/
 
 sast:
   stage: test
@@ -62,5 +61,9 @@ pages:
   artifacts:
     paths:
       - public
+  cache:
+    key: $CI_PROJECT_PATH_SLUG
+    paths:
+      - node_modules/
   only:
     - master
