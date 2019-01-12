@@ -65,9 +65,10 @@ pages:
   script:
     - npm install
     # Make the pdf
-    - npm run start -- --no-sandbox &
-    - google-chrome-stable --disable-gpu --headless --print-to-pdf="$PWD/public/resume.pdf" "http://localhost:3000"
-    - killall npm
+    - npm run build
+    - npm install -g serve
+    - serve -s build &
+    - google-chrome-stable --disable-gpu --headless --print-to-pdf="$PWD/public/resume.pdf" "http://localhost:5000"
     # Build and make the output available in the /public directory
     - npm run build
     - mv public public-original
