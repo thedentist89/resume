@@ -21,7 +21,8 @@ make-build-env:
     - docker build -t $DOCKER_IMAGE -f ci/Dockerfile.build-env .
     - docker push $DOCKER_IMAGE
   only:
-    - master
+    refs:
+      - master
     changes:
       - ci/Dockerfile.build-env
 
