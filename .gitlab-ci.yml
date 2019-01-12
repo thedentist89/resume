@@ -23,7 +23,6 @@ make-build-env:
   only:
     refs:
       - master
-      - setup-pdf-build
     changes:
       - ci/Dockerfile.build-env
 
@@ -36,8 +35,6 @@ test:
     key: $CI_PROJECT_PATH_SLUG
     paths:
       - node_modules/
-  except:
-    - setup-pdf-build
 
 sast:
   stage: test
@@ -55,8 +52,6 @@ sast:
   artifacts:
     reports:
       sast: gl-sast-report.json
-  except:
-    - setup-pdf-build
 
 pages:
   image: $DOCKER_REGISTRY/$CI_PROJECT_PATH/build-env:latest
@@ -87,4 +82,3 @@ pages:
       - node_modules/
   only:
     - master
-    - setup-pdf-build
