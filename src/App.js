@@ -12,9 +12,17 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${props => props.theme.bg};
     min-width: 320px;
+  }
 
-    @media print {
+  @media print {
+    @page {
+      margin: 0 0rem;
+      size: auto;
+    }
+
+    body {
       background-color: transparent;
+      box-sizing: border-box;
     }
   }
 `
@@ -33,7 +41,7 @@ const StyleBase = styled.div`
     grid-gap: 68px;
     grid-template-columns: 320px 1fr;
     grid-template-rows: auto 1fr;
-    padding: 0;
+    padding: 6rem 3.2rem;
 
     .main {
       grid-column: 2;
@@ -60,11 +68,11 @@ export default class App extends Component {
             <Suspense fallback="">
               <Skills />
             </Suspense>
+          </div>
+          <div className="side">
             <Suspense fallback="">
               <Education />
             </Suspense>
-          </div>
-          <div className="side">
             <Suspense fallback="">
               <Extra />
             </Suspense>

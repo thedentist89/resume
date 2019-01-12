@@ -22,6 +22,10 @@ const StyleBase = styled.section`
   a {
     color: ${props => props.theme.primary};
   }
+
+  @media print {
+    margin-bottom: 76px;
+  }
 `
 
 export default class Section extends Component {

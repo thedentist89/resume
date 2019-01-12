@@ -1,15 +1,40 @@
 image: node:current
 
-cache:
-  key: $CI_PROJECT_PATH_SLUG
-  paths:
-  - node_modules/
+services:
+  - docker:stable-dind
+
+variables:
+  DOCKER_REGISTRY: registry.gitlab.com
+
+stages:
+  - prepare
+  - test
+  - deploy
+
+make-build-env:
+  stage: prepare
+  image: docker:stable
+  variables:
+    DOCKER_IMAGE: $DOCKER_REGISTRY/$CI_PROJECT_PATH/build-env:latest
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $DOCKER_REGISTRY
+    - docker build -t $DOCKER_IMAGE -f ci/Dockerfile.build-env .
+    - docker push $DOCKER_IMAGE
+  only:
+    refs:
+      - master
+    changes:
+      - ci/Dockerfile.build-env
 
 test:
   stage: test
   script:
-  - npm install
-  - npm test -- --coverage
+    - npm install
+    - npm test -- --coverage
+  cache:
+    key: $CI_PROJECT_PATH_SLUG
+    paths:
+      - node_modules/
 
 sast:
   stage: test
@@ -17,8 +42,6 @@ sast:
   variables:
     DOCKER_DRIVER: overlay2
   allow_failure: true
-  services:
-    - docker:stable-dind
   script:
     - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
     - docker run
@@ -31,16 +54,31 @@ sast:
       sast: gl-sast-report.json
 
 pages:
+  image: $DOCKER_REGISTRY/$CI_PROJECT_PATH/build-env:latest
   stage: deploy
+  variables:
+    ADD_PDF_LINK: 1
   script:
-  - npm install
-  - npm run build
-  - mv public public-original
-  - mv build public
-  # Make precompressed gzip versions of files
-  - find public -type f -iregex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -execdir gzip -f --keep {} \;
+    - npm install
+    # Make the pdf
+    - npm run start 1> /dev/null 2>&1 &
+    - sleep 3
+    - google-chrome-stable
+      --disable-gpu --headless --no-sandbox
+      --print-to-pdf="$PWD/public/resume.pdf" "http://localhost:3000"
+    # Build and make the output available in the /public directory
+    - npm run build
+    - mv public public-original
+    - mv build public
+    # Make precompressed gzip versions of files
+    - find public -type f -iregex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -execdir gzip -f --keep {} \;
   artifacts:
     paths:
-    - public
+      - public
+  cache:
+    policy: pull
+    key: $CI_PROJECT_PATH_SLUG
+    paths:
+      - node_modules/
   only:
-  - master
+    - master
