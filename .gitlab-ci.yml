@@ -1,0 +1,28 @@
+image: node:11
+
+cache:
+  key: $CI_PROJECT_PATH_SLUG
+  paths:
+  - node_modules/
+
+test:
+  stage: test
+  script:
+  - npm install
+  - npm test -- --coverage
+
+pages:
+  stage: deploy
+  script:
+  - npm install
+  - npm run build
+  - mv public public-original
+  - mv build public
+  # Make precompressed gzip versions of files
+  - find public -type f -iregex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -execdir gzip -f --keep {} \;
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+  - setup-ci
