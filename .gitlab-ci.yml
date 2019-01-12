@@ -20,6 +20,10 @@ make-build-env:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $DOCKER_REGISTRY
     - docker build -t $DOCKER_IMAGE -f ci/Dockerfile.build-env .
     - docker push $DOCKER_IMAGE
+  only:
+    - master
+    changes:
+      - ci/Dockerfile.build-env
 
 test:
   stage: test
@@ -51,8 +55,15 @@ sast:
 pages:
   image: $DOCKER_REGISTRY/$CI_PROJECT_PATH/build-env:latest
   stage: deploy
+  variables:
+    ADD_PDF_LINK: 1
   script:
     - npm install
+    # Make the pdf
+    - npm start &
+    - google-chrome-stable --disable-gpu --headless --print-to-pdf="$PWD/public/resume.pdf" "http://localhost:3000"
+    - killall npm
+    # Build and make the output available in the /public directory
     - npm run build
     - mv public public-original
     - mv build public
@@ -67,3 +78,4 @@ pages:
       - node_modules/
   only:
     - master
+    - setup-pdf-build
