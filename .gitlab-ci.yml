@@ -1,4 +1,4 @@
-image: node:11
+image: node:current
 
 cache:
   key: $CI_PROJECT_PATH_SLUG
@@ -25,4 +25,3 @@ pages:
     - public
   only:
   - master
-  - setup-ci
