@@ -23,6 +23,27 @@ const StyleBase = styled.article`
     color: ${props => props.theme.secondary};
   }
 
+  .label a,
+  .sub-title a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:after {
+      font-family: icomoon;
+      font-size: 0.9em;
+      content: '\\e907';
+      margin-left: 5px;
+
+      @media print {
+        display: none;
+      }
+    }
+  }
+
   .period {
     font-weight: 400;
     white-space: nowrap;
@@ -83,9 +104,20 @@ export default class Item extends Component {
     return (
       <StyleBase {...this.props}>
         <div className="heading">
-          <div className="label">{this.props.label}</div>
+          <div className="label">
+            {this.props.labelLink ? (
+              <a href={this.props.labelLink}>{this.props.label}</a>
+            ) : (
+              this.props.label
+            )}
+          </div>
           <div className="sub-title">
-            {this.props.subtitle} <span className="period">{period}</span>
+            {this.props.subtitleLink ? (
+              <a href={this.props.subtitleLink}>{this.props.subtitle}</a>
+            ) : (
+              this.props.subtitle
+            )}{' '}
+            <span className="period">{period}</span>
           </div>
         </div>
         {tasks && (

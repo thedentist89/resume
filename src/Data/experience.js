@@ -2,6 +2,7 @@ export default [
   {
     label: 'Full Stack Python / DevOps',
     subtitle: 'United Remote Morocco (Rabat, Morocco)',
+    subtitleLink: '//unitedremote.com',
     period: ['04/2017', 'Current'],
     tasks: [
       'Work as an active member of a remote team, <a href="https://efficity.com">effiCity (Paris, France).</a>',
@@ -13,6 +14,7 @@ export default [
   {
     label: 'Internship',
     subtitle: 'Caciopée (Rabat, Morocco)',
+    subtitleLink: '//caciopee.com',
     period: ['01/2015', '02/2015'],
     tasks: [
       'Work with an in-house app involving the jBOSS stack; maingly design jBPM workflows and write DROOLS rules.',
@@ -20,6 +22,7 @@ export default [
   },
   {
     label: 'M2N – a 2D multi-platform Game Engine',
+    labelLink: '//github.com/dermoumi/m2n',
     subtitle: 'Personal project – C++',
     period: '2014',
     tasks: [
@@ -32,6 +35,7 @@ export default [
   },
   {
     label: 'Rockout – a Web-based Guitar Hero clone',
+    labelLink: '//github.com/dermoumi/rockout',
     subtitle: 'Personal project – Javascript / PHP',
     period: '2014',
     tasks: [
