@@ -49,6 +49,22 @@ it("renders experience item's tasks list", () => {
   expect($tasks).toHaveLength(tasks.length)
 })
 
+it('contains label-level links', () => {
+  const href = 'http://example.com'
+  const wrapper = shallow(<Item labelLink={href} />)
+
+  const $labelLink = wrapper.find('.label a')
+  expect($labelLink.prop('href')).toEqual(href)
+})
+
+it('contains subtitle-level links', () => {
+  const href = 'http://example.com'
+  const wrapper = shallow(<Item subtitleLink={href} />)
+
+  const $subtitleLink = wrapper.find('.sub-title a')
+  expect($subtitleLink.prop('href')).toEqual(href)
+})
+
 it('respects the theme', () => {
   const theme = {
     primary: '#FFCC00',
