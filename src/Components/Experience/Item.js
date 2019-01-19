@@ -106,14 +106,26 @@ export default class Item extends Component {
         <div className="heading">
           <div className="label">
             {this.props.labelLink ? (
-              <a href={this.props.labelLink}>{this.props.label}</a>
+              <a
+                href={this.props.labelLink}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {this.props.label}
+              </a>
             ) : (
               this.props.label
             )}
           </div>
           <div className="sub-title">
             {this.props.subtitleLink ? (
-              <a href={this.props.subtitleLink}>{this.props.subtitle}</a>
+              <a
+                href={this.props.subtitleLink}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {this.props.subtitle}
+              </a>
             ) : (
               this.props.subtitle
             )}{' '}

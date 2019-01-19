@@ -5,7 +5,7 @@ export default [
     subtitleLink: '//unitedremote.com',
     period: ['04/2017', 'Current'],
     tasks: [
-      'Work as an active member of a remote team, <a href="https://efficity.com">effiCity (Paris, France).</a>',
+      'Work as an active member of a remote team, <a href="https://efficity.com" target="_blank" rel="noopener noreferrer">effiCity (Paris, France).</a>',
       'Work on several services using the Django/Celery stack.',
       "Setup staging CI using Docker, Gitlab-CI, Rancher, ZFS as well as PostgresQL's logical replication.",
       'Setup and write tests for a couple projects, ranging from unit tests with coverage to functional tests with Selenium.',
