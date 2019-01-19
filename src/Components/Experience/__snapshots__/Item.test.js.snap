@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Experience section item respects the theme 1`] = `
+.c0 {
+  margin-bottom: 16px;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+.c0 .label {
+  font-size: 1.1em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  line-height: 1.25rem;
+  color: #FFCC00;
+}
+
+.c0 .sub-title {
+  font-size: 0.9em;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: #00FFCC;
+}
+
+.c0 .label a,
+.c0 .sub-title a {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 .label a:hover,
+.c0 .sub-title a:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c0 .label a:after,
+.c0 .sub-title a:after {
+  font-family: icomoon;
+  font-size: 0.9em;
+  content: '\\e907';
+  margin-left: 5px;
+}
+
+.c0 .period {
+  font-weight: 400;
+  white-space: nowrap;
+  color: #CC00FF;
+}
+
+.c0 .period-arrow {
+  font-family: icomoon;
+  font-size: 0.9em;
+}
+
+.c0 .item-content {
+  line-height: 1.25rem;
+  padding-top: 4px;
+}
+
+.c0 .item-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: calc(1em + 10px);
+}
+
+.c0 .item-content ul li {
+  margin-bottom: 6px;
+}
+
+.c0 .item-content ul li:before {
+  font-family: icomoon;
+  content: '\\e906';
+  color: #CC00FF;
+  margin-left: calc(-1em - 10px);
+  margin-right: 10px;
+}
+
+@media print {
+  .c0 .label a:after,
+  .c0 .sub-title a:after {
+    display: none;
+  }
+}
+
+<Item
+  label="My Label"
+  period={
+    Array [
+      1337,
+      "20XX",
+    ]
+  }
+  subtitle="My info"
+  tasks={
+    Array [
+      "TaskA",
+      "TaskB",
+    ]
+  }
+  theme={
+    Object {
+      "accent": "#CC00FF",
+      "primary": "#FFCC00",
+      "secondary": "#00FFCC",
+    }
+  }
+>
+  <styled.article
+    label="My Label"
+    period={
+      Array [
+        1337,
+        "20XX",
+      ]
+    }
+    subtitle="My info"
+    tasks={
+      Array [
+        "TaskA",
+        "TaskB",
+      ]
+    }
+    theme={
+      Object {
+        "accent": "#CC00FF",
+        "primary": "#FFCC00",
+        "secondary": "#00FFCC",
+      }
+    }
+  >
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  margin-bottom: 16px;
+  /* max-width: 608px; */
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .label {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    line-height: 1.25rem;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .sub-title {
+    font-size: 0.9em;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .label a,
+  .sub-title a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:after {
+      font-family: icomoon;
+      font-size: 0.9em;
+      content: '\\\\e907';
+      margin-left: 5px;
+
+      @media print {
+        display: none;
+      }
+    }
+  }
+
+  .period {
+    font-weight: 400;
+    white-space: nowrap;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .period-arrow {
+    font-family: icomoon;
+    font-size: 0.9em;
+  }
+
+  .item-content {
+    line-height: 1.25rem;
+    padding-top: 4px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      padding-left: calc(1em + 10px);
+
+      li {
+        margin-bottom: 6px;
+
+        &:before {
+          font-family: icomoon;
+          content: '\\\\e906';
+          color: ",
+              [Function],
+              ";
+          margin-left: calc(-1em - 10px);
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+",
+            ],
+          },
+          "displayName": "styled.article",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "article",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      label="My Label"
+      period={
+        Array [
+          1337,
+          "20XX",
+        ]
+      }
+      subtitle="My info"
+      tasks={
+        Array [
+          "TaskA",
+          "TaskB",
+        ]
+      }
+      theme={
+        Object {
+          "accent": "#CC00FF",
+          "primary": "#FFCC00",
+          "secondary": "#00FFCC",
+        }
+      }
+    >
+      <article
+        className="c0"
+        label="My Label"
+      >
+        <div
+          className="heading"
+        >
+          <div
+            className="label"
+          >
+            My Label
+          </div>
+          <div
+            className="sub-title"
+          >
+            My info
+             
+            <span
+              className="period"
+            >
+              1337
+              <span
+                className="period-arrow"
+              >
+                  
+              </span>
+              20XX
+            </span>
+          </div>
+        </div>
+        <div
+          className="item-content"
+        >
+          <ul>
+            <li
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "TaskA",
+                }
+              }
+              key="0"
+            />
+            <li
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "TaskB",
+                }
+              }
+              key="1"
+            />
+          </ul>
+        </div>
+      </article>
+    </StyledComponent>
+  </styled.article>
+</Item>
+`;
