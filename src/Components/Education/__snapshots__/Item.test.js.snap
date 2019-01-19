@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Education section item respects the theme 1`] = `
+.c0 {
+  margin-bottom: 16px;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+.c0 .title {
+  font-size: 1.1em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  line-height: 1.25rem;
+  color: #FFCC00;
+}
+
+.c0 .sub-title {
+  font-size: 0.9em;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: #00FFCC;
+}
+
+.c0 .period {
+  font-weight: 400;
+  white-space: nowrap;
+  color: #CC00FF;
+}
+
+.c0 .period-arrow {
+  font-family: icomoon;
+  font-size: 0.9em;
+}
+
+<Item
+  degree="My degree"
+  info="My info"
+  period={
+    Array [
+      1337,
+      "20XX",
+    ]
+  }
+  theme={
+    Object {
+      "accent": "#CC00FF",
+      "primary": "#FFCC00",
+      "secondary": "#00FFCC",
+    }
+  }
+>
+  <styled.article
+    degree="My degree"
+    info="My info"
+    period={
+      Array [
+        1337,
+        "20XX",
+      ]
+    }
+    theme={
+      Object {
+        "accent": "#CC00FF",
+        "primary": "#FFCC00",
+        "secondary": "#00FFCC",
+      }
+    }
+  >
+    <StyledComponent
+      degree="My degree"
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .title {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    line-height: 1.25rem;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .sub-title {
+    font-size: 0.9em;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .period {
+    font-weight: 400;
+    white-space: nowrap;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .period-arrow {
+    font-family: icomoon;
+    font-size: 0.9em;
+  }
+",
+            ],
+          },
+          "displayName": "styled.article",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "article",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      info="My info"
+      period={
+        Array [
+          1337,
+          "20XX",
+        ]
+      }
+      theme={
+        Object {
+          "accent": "#CC00FF",
+          "primary": "#FFCC00",
+          "secondary": "#00FFCC",
+        }
+      }
+    >
+      <article
+        className="c0"
+      >
+        <div
+          className="heading"
+        >
+          <div
+            className="title"
+          >
+            My degree
+          </div>
+          <div
+            className="sub-title"
+          >
+            My info
+             
+            <span
+              className="period"
+            >
+              1337
+              <span
+                className="period-arrow"
+              >
+                  
+              </span>
+              20XX
+            </span>
+          </div>
+        </div>
+      </article>
+    </StyledComponent>
+  </styled.article>
+</Item>
+`;

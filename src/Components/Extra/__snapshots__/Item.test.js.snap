@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Extra section item respects the theme 1`] = `
+.c0 {
+  margin-bottom: 16px;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+.c0 .label {
+  font-size: 1.1em;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  line-height: 1.25rem;
+  color: #FFCC00;
+}
+
+.c0 .sub-title {
+  font-size: 0.9em;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: #00FFCC;
+}
+
+<Item
+  details="My details"
+  label="My label"
+  theme={
+    Object {
+      "accent": "#CC00FF",
+      "primary": "#FFCC00",
+      "secondary": "#00FFCC",
+    }
+  }
+>
+  <styled.article
+    details="My details"
+    label="My label"
+    theme={
+      Object {
+        "accent": "#CC00FF",
+        "primary": "#FFCC00",
+        "secondary": "#00FFCC",
+      }
+    }
+  >
+    <StyledComponent
+      details="My details"
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .label {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    line-height: 1.25rem;
+    color: ",
+              [Function],
+              ";
+  }
+
+  .sub-title {
+    font-size: 0.9em;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    color: ",
+              [Function],
+              ";
+  }
+",
+            ],
+          },
+          "displayName": "styled.article",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "article",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      label="My label"
+      theme={
+        Object {
+          "accent": "#CC00FF",
+          "primary": "#FFCC00",
+          "secondary": "#00FFCC",
+        }
+      }
+    >
+      <article
+        className="c0"
+        label="My label"
+      >
+        <div
+          className="heading"
+        >
+          <div
+            className="label"
+          >
+            My label
+          </div>
+          <div
+            className="sub-title"
+          >
+            My details
+          </div>
+        </div>
+      </article>
+    </StyledComponent>
+  </styled.article>
+</Item>
+`;

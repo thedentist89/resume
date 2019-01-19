@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the mugshot correctly 1`] = `
+exports[`Mugshot component renders the mugshot correctly 1`] = `
 <styled.svg
   alt="Saïd Dermoumi"
   viewBox="0 0 321.3 383.4"

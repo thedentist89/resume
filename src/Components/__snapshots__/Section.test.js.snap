@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section component respects the theme 1`] = `
+.c0 {
+  margin-bottom: 38px;
+}
+
+.c0:last-child {
+  margin-bottom: 16px;
+}
+
+.c0 h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  color: #FFCC00;
+}
+
+.c0 a {
+  color: #FFCC00;
+}
+
+@media print {
+  .c0 {
+    margin-bottom: 76px;
+  }
+}
+
+<Section
+  label="My title"
+  theme={
+    Object {
+      "primary": "#FFCC00",
+    }
+  }
+>
+  <styled.section
+    label="My title"
+    theme={
+      Object {
+        "primary": "#FFCC00",
+      }
+    }
+  >
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  margin-bottom: 38px;
+
+  &:last-child {
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    color: ",
+              [Function],
+              ";
+  }
+
+  a {
+    color: ",
+              [Function],
+              ";
+  }
+
+  @media print {
+    margin-bottom: 76px;
+  }
+",
+            ],
+          },
+          "displayName": "styled.section",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "section",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      label="My title"
+      theme={
+        Object {
+          "primary": "#FFCC00",
+        }
+      }
+    >
+      <section
+        className="c0"
+        label="My title"
+      >
+        <h3>
+          My title
+        </h3>
+        <div
+          className="section-content"
+        >
+          <div>
+            Content
+          </div>
+        </div>
+      </section>
+    </StyledComponent>
+  </styled.section>
+</Section>
+`;
