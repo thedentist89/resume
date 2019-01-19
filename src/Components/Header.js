@@ -89,7 +89,11 @@ export default class Header extends Component {
             <a href={`mailto:${data.email}`}>{data.email}</a>
           </div>
           <div className="github">
-            <a href={`//${data.github}`} target="_blank">
+            <a
+              href={`//${data.github}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {data.github}
             </a>
           </div>

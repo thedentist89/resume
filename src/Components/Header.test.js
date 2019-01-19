@@ -33,7 +33,10 @@ describe('Header component', () => {
 
     expect(githubLink.text()).toMatch(data.github)
     expect(githubLink.prop('href')).toMatch(new RegExp(`^//${data.github}`))
-    expect(githubLink.prop('target')).toMatch('_blank')
+
+    expect(githubLink.prop('target')).toEqual('_blank')
+    expect(githubLink.prop('rel')).toContain('noopener')
+    expect(githubLink.prop('rel')).toContain('noreferrer')
   })
 
   it('shows the address', () => {

@@ -50,19 +50,25 @@ describe('Experience section item', () => {
   })
 
   it('contains label-level links', () => {
-    const href = 'http://example.com'
+    const href = '//example.com'
     const wrapper = shallow(<Item labelLink={href} />)
 
     const $labelLink = wrapper.find('.label a')
     expect($labelLink.prop('href')).toEqual(href)
+    expect($labelLink.prop('target')).toEqual('_blank')
+    expect($labelLink.prop('rel')).toContain('noreferrer')
+    expect($labelLink.prop('rel')).toContain('noopener')
   })
 
   it('contains subtitle-level links', () => {
-    const href = 'http://example.com'
+    const href = '//example.com'
     const wrapper = shallow(<Item subtitleLink={href} />)
 
     const $subtitleLink = wrapper.find('.sub-title a')
     expect($subtitleLink.prop('href')).toEqual(href)
+    expect($subtitleLink.prop('target')).toEqual('_blank')
+    expect($subtitleLink.prop('rel')).toContain('noreferrer')
+    expect($subtitleLink.prop('rel')).toContain('noopener')
   })
 
   it('respects the theme', () => {
