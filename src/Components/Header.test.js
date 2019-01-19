@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 
 import Header from './Header'
-import data from '../data/header'
+import data from '../Data/header'
 
 describe('Header component', () => {
   let wrapper
