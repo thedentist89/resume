@@ -2,6 +2,7 @@ import React, { Component, Suspense } from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from './style'
 import Header from './Components/Header'
+import Menu from './Components/Menu'
 
 const Experience = React.lazy(() => import('./Components/Experience/Component'))
 const Skills = React.lazy(() => import('./Components/Skills/Component'))
@@ -60,6 +61,7 @@ export default class App extends Component {
       <ThemeProvider theme={style.light}>
         <StyleBase>
           <GlobalStyle />
+          <Menu pdfLink={process.env.REACT_APP_PDF} />
           <Header />
           <div className="main">
             <Suspense fallback="">
