@@ -21,6 +21,14 @@ const StyleBase = styled.header`
     .st {
       stroke: ${props => props.theme.lineart};
     }
+
+    .glass-bg {
+      fill: ${props => props.theme.glass};
+    }
+
+    .eyes {
+      stroke: ${props => props.theme.eyes};
+    }
   }
 
   h1 {

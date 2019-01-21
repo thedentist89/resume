@@ -57,7 +57,7 @@ pages:
   image: $DOCKER_REGISTRY/$CI_PROJECT_PATH/build-env:latest
   stage: deploy
   variables:
-    ADD_PDF_LINK: 1
+    REACT_APP_PDF: 1
   script:
     - npm install
     # Make the pdf

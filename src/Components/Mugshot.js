@@ -22,6 +22,11 @@ const StyledBase = styled.svg`
     stroke-width: 4;
   }
 
+  .glass-bg {
+    fill: none;
+    stroke: none;
+  }
+
   /* Reset eyes position for printing */
   @media print {
     .eyes {
@@ -167,6 +172,8 @@ export default class Mugshot extends Component {
           className="st st4"
           d="M128.9,320.7c-9.2,1.1-19,1-28.9-0.7c-59-10-56-109.8-56-109.8"
         />
+        <use xlinkHref="#glassleft" className="glass-bg" />
+        <use xlinkHref="#glassright" className="glass-bg" />
         <g clipPath={`url(#glassmask)`}>
           <path
             className="st st2 eyes"

@@ -1,7 +1,9 @@
 import React, { Component, Suspense } from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from './style'
+import AppContext from './AppContext'
 import Header from './Components/Header'
+import Menu from './Components/Menu'
 
 const Experience = React.lazy(() => import('./Components/Experience/Component'))
 const Skills = React.lazy(() => import('./Components/Skills/Component'))
@@ -52,33 +54,62 @@ const StyleBase = styled.div`
       margin-top: 0;
     }
   }
+
+  @media screen and (max-width: 425px) {
+    padding-bottom: 56px;
+  }
 `
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+
+    const theme =
+      localStorage.getItem('theme') === 'dark' ? style.dark : style.light
+
+    this.state = { theme }
+
+    this.toggleTheme = this.toggleTheme.bind(this)
+  }
+
+  toggleTheme() {
+    const theme = this.state.theme === style.light ? style.dark : style.light
+    this.setState({ theme })
+    localStorage.setItem('theme', theme === style.dark ? 'dark' : 'light')
+  }
+
   render() {
     return (
-      <ThemeProvider theme={style.light}>
-        <StyleBase>
-          <GlobalStyle />
-          <Header />
-          <div className="main">
-            <Suspense fallback="">
-              <Experience />
-            </Suspense>
-            <Suspense fallback="">
-              <Skills />
-            </Suspense>
-          </div>
-          <div className="side">
-            <Suspense fallback="">
-              <Education />
-            </Suspense>
-            <Suspense fallback="">
-              <Extra />
-            </Suspense>
-          </div>
-        </StyleBase>
-      </ThemeProvider>
+      <AppContext.Provider
+        value={{
+          theme: this.state.theme,
+          toggleTheme: this.toggleTheme,
+        }}
+      >
+        <ThemeProvider theme={this.state.theme}>
+          <StyleBase>
+            <GlobalStyle />
+            <Menu pdfLink={process.env.REACT_APP_PDF} />
+            <Header />
+            <div className="main">
+              <Suspense fallback="">
+                <Experience />
+              </Suspense>
+              <Suspense fallback="">
+                <Skills />
+              </Suspense>
+            </div>
+            <div className="side">
+              <Suspense fallback="">
+                <Education />
+              </Suspense>
+              <Suspense fallback="">
+                <Extra />
+              </Suspense>
+            </div>
+          </StyleBase>
+        </ThemeProvider>
+      </AppContext.Provider>
     )
   }
 }

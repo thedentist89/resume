@@ -47,6 +47,14 @@ exports[`Mugshot component renders the mugshot correctly 1`] = `
     className="st st4"
     d="M128.9,320.7c-9.2,1.1-19,1-28.9-0.7c-59-10-56-109.8-56-109.8"
   />
+  <use
+    className="glass-bg"
+    xlinkHref="#glassleft"
+  />
+  <use
+    className="glass-bg"
+    xlinkHref="#glassright"
+  />
   <g
     clipPath="url(#glassmask)"
   >

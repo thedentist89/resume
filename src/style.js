@@ -8,6 +8,8 @@ export default {
     accent: 'hsl(209, 89%, 44%)',
 
     lineart: 'hsl(205, 7%, 33%)',
+    glass: 'none',
+    eyes: 'hsl(205, 7%, 33%)',
   },
   dark: {
     fg: 'hsl(70, 6%, 79%)',
@@ -18,5 +20,7 @@ export default {
     accent: 'hsl(28, 100%, 63%)',
 
     lineart: 'hsl(219, 10%, 50%)',
+    glass: 'hsl(219, 10%, 50%)',
+    eyes: 'hsl(216, 33%, 6%)',
   },
 }
