@@ -64,17 +64,18 @@ export default class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      theme: style.light,
-    }
+    const theme =
+      localStorage.getItem('theme') === 'dark' ? style.dark : style.light
+
+    this.state = { theme }
 
     this.toggleTheme = this.toggleTheme.bind(this)
   }
 
   toggleTheme() {
-    this.setState({
-      theme: this.state.theme === style.light ? style.dark : style.light,
-    })
+    const theme = this.state.theme === style.light ? style.dark : style.light
+    this.setState({ theme })
+    localStorage.setItem('theme', theme === style.dark ? 'dark' : 'light')
   }
 
   render() {
