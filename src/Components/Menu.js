@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import style from '../style'
+import AppContext from '../AppContext'
 
 const StyledBase = styled.div`
   @media print {
@@ -30,7 +32,9 @@ const StyledBase = styled.div`
     width: 56px;
     display: flex;
     top: 10px;
-    flex-direction: column @media (max-width: 425px) {
+    flex-direction: column;
+
+    @media (max-width: 425px) {
       top: unset;
       bottom: 10px;
       flex-direction: column-reverse;
@@ -141,6 +145,8 @@ const StyledBase = styled.div`
 `
 
 export default class Menu extends Component {
+  static contextType = AppContext
+
   constructor(props) {
     super(props)
 
@@ -152,16 +158,17 @@ export default class Menu extends Component {
     this.toggleTheme = this.toggleTheme.bind(this)
   }
 
-  toggleMenu(event) {
-    event.preventDefault()
-
+  toggleMenu() {
     this.setState({
       on: !this.state.on,
     })
   }
 
-  toggleTheme(event) {
-    event.preventDefault()
+  toggleTheme() {
+    this.context.toggleTheme()
+    this.setState({
+      on: false,
+    })
   }
 
   render() {
@@ -171,8 +178,9 @@ export default class Menu extends Component {
     const toggleLabel = this.state.on ? 'Hide menu' : 'Show menu'
     const toggleIcon = this.state.on ? '' : ''
 
-    const themeIcon = ''
-    const themeLabel = 'Dark mode' // TODO: Change depending on which theme is enabled
+    const themeIcon = this.context.theme === style.light ? '' : ''
+    const themeLabel =
+      this.context.theme === style.light ? 'Dark mode' : 'Light mode'
 
     return (
       <StyledBase className={classList.join(' ')}>

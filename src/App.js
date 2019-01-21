@@ -1,6 +1,7 @@
 import React, { Component, Suspense } from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from './style'
+import AppContext from './AppContext'
 import Header from './Components/Header'
 import Menu from './Components/Menu'
 
@@ -53,34 +54,61 @@ const StyleBase = styled.div`
       margin-top: 0;
     }
   }
+
+  @media screen and (max-width: 425px) {
+    padding-bottom: 56px;
+  }
 `
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      theme: style.light,
+    }
+
+    this.toggleTheme = this.toggleTheme.bind(this)
+  }
+
+  toggleTheme() {
+    this.setState({
+      theme: this.state.theme === style.light ? style.dark : style.light,
+    })
+  }
+
   render() {
     return (
-      <ThemeProvider theme={style.light}>
-        <StyleBase>
-          <GlobalStyle />
-          <Menu pdfLink={process.env.REACT_APP_PDF} />
-          <Header />
-          <div className="main">
-            <Suspense fallback="">
-              <Experience />
-            </Suspense>
-            <Suspense fallback="">
-              <Skills />
-            </Suspense>
-          </div>
-          <div className="side">
-            <Suspense fallback="">
-              <Education />
-            </Suspense>
-            <Suspense fallback="">
-              <Extra />
-            </Suspense>
-          </div>
-        </StyleBase>
-      </ThemeProvider>
+      <AppContext.Provider
+        value={{
+          theme: this.state.theme,
+          toggleTheme: this.toggleTheme,
+        }}
+      >
+        <ThemeProvider theme={this.state.theme}>
+          <StyleBase>
+            <GlobalStyle />
+            <Menu pdfLink={process.env.REACT_APP_PDF} />
+            <Header />
+            <div className="main">
+              <Suspense fallback="">
+                <Experience />
+              </Suspense>
+              <Suspense fallback="">
+                <Skills />
+              </Suspense>
+            </div>
+            <div className="side">
+              <Suspense fallback="">
+                <Education />
+              </Suspense>
+              <Suspense fallback="">
+                <Extra />
+              </Suspense>
+            </div>
+          </StyleBase>
+        </ThemeProvider>
+      </AppContext.Provider>
     )
   }
 }
