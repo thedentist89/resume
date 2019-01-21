@@ -19,7 +19,7 @@ const StyleBase = styled.header`
     height: auto;
 
     .st {
-      stroke: ${props => props.theme.fg};
+      stroke: ${props => props.theme.lineart};
     }
   }
 
